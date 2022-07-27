@@ -1,0 +1,60 @@
+.messageAlert {
+    background: #C6EFCE;
+    box-shadow: 0px 1.5rem 1.5rem -0.5rem rgba(23, 43, 77, 0.24);
+    border-radius: 4px;
+    position: fixed;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    padding: .75rem;
+    z-index: 10;
+    left: 50%;
+    top: 4rem;
+    transform: translateX(-50%);
+    justify-content: space-between;
+}
+
+.alert--copy{
+    background: #C6CAF0;
+}
+
+.messageAlert__text {
+    padding-left: .5rem;
+}
+
+
+
+.messageAlert__closeIcon {
+    cursor: pointer;
+    padding:0rem 0.5rem;
+}
+
+.messageAlert__undo {
+    color: #006100;
+    font-weight: bold;
+    font-size: .875rem;
+    line-height: .875rem;
+    margin-right: .5rem;
+    cursor: pointer;
+    margin-left: auto;
+}
+
+.messageAlertWidthForUndo {
+    width: 24.4375rem;
+}
+
+@media only screen and (max-width: 1280px){ 
+    .messageAlertWidthForUndo {
+        width: 25.4375rem;
+    }   
+}
+
+@media only screen and (max-width: 767px){ 
+    .messageAlertWidthForUndo {
+        width: 25.4375rem;
+    }   
+
+    .messageAlert.messageAlert {
+        top: 4.2rem;
+    }
+}
