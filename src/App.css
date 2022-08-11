@@ -113,7 +113,7 @@ div#sidebar-cart{
   left: auto;
 }
 .drawer{
-  z-index: 100000;
+  z-index: 10;
   width: 55rem;
   position: fixed;
   top: 0;

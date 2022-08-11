@@ -91,111 +91,114 @@ class App extends React.Component {
 
     return (
       <>
-        {showMessageAlert && (
-          <ShowAlertMessage
-            messageText="Items has been added in your cart."
-            messageAlertColor=""
-            messageAlertWidth="true"
-            hideMessageAlert={this.hideMessageAlert}
-          />
-        )}
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "end",
-            marginRight: "15.5%",
-            marginTop: "2%",
-            marginBottom: "1%",
-          }}
-        >
-          <button
-            style={{
-              background: "#faebd7",
-              padding: "5px",
-              fontSize: "20px",
-              fontWeight: "700",
-              borderRadius: "5px",
-            }}
-            onClick={() => {
-              this.setState({ show: true });
-            }}
-          >
-            <img src="cart.svg" style={{ width: "25px" }} />
-            Your Cart
-          </button>
-        </div>
-        <div
-          id="container"
-          className="container"
-          style={{ width: "100%", height: "89vh" }}
-        >
+        <div style={{ zIndex: "1" }}>
+          {showMessageAlert && (
+            <ShowAlertMessage
+              messageText="Items has been added in your cart."
+              messageAlertColor=""
+              messageAlertWidth="true"
+              hideMessageAlert={this.hideMessageAlert}
+            />
+          )}
           <div
-            className="row"
             style={{
-              width: "100%",
               display: "flex",
-              justifyContent: "space-around",
+              justifyContent: "end",
+              marginRight: "15.5%",
+              marginTop: "2%",
+              marginBottom: "1%",
             }}
           >
-            {data.length
-              ? data.map((n, index) => {
-                  return (
-                    <div
-                      style={{
-                        width: "24%",
-                        border: "1px solid #dcdcdc",
-                        marginRight: "1%",
-                        marginTop: "1%",
-                        borderRadius: "8px",
-                        padding: "0",
-                      }}
-                    >
-                      <div style={{ padding: "10px" }}>
-                        <div
-                          style={{
-                            width: "100%",
-                          }}
-                        >
-                          <img
-                            src={image[index % 4] ? image[index % 4] : ""}
-                            style={{ width: "100%" }}
-                          />
-                        </div>
-                        <div>
-                          <h1>{n.product_name ? n.product_name : ""}</h1>
-                        </div>
-                        <div>
-                          <h3>
-                            {n.price !== undefined ? "Rs. " + n.price : ""}
-                          </h3>
-                        </div>
-                      </div>
-                      <div style={{ width: "100%" }}>
-                        <button
-                          style={{
-                            width: "100%",
-                            backgroundColor: "#ceb38e",
-                            fontWeight: "800",
-                            fontSize: "18px",
-                            borderRadius: "8px",
-                            padding: "8px",
-                          }}
-                          onClick={() =>
-                            this.ClickOnAddToCart(image[index % 4], n)
-                          }
-                        >
-                          ADD TO CART
-                        </button>
-                      </div>
-                    </div>
-                  );
-                })
-              : ""}
+            <button
+              style={{
+                background: "#faebd7",
+                padding: "5px",
+                fontSize: "20px",
+                fontWeight: "700",
+                borderRadius: "5px",
+              }}
+              onClick={() => {
+                this.setState({ show: true });
+              }}
+            >
+              <img src="cart.svg" style={{ width: "25px" }} />
+              Your Cart
+            </button>
           </div>
-          <div className="col-lg-6"></div>
-        </div>
+          <div
+            id="container"
+            className="container"
+            style={{ width: "100%", height: "89vh" }}
+          >
+            <div
+              className="row"
+              style={{
+                width: "100%",
+                display: "flex",
+                justifyContent: "space-around",
+              }}
+            >
+              {data.length
+                ? data.map((n, index) => {
+                    return (
+                      <div
+                        key={index}
+                        style={{
+                          width: "24%",
+                          border: "1px solid #dcdcdc",
+                          marginRight: "1%",
+                          marginTop: "1%",
+                          borderRadius: "8px",
+                          padding: "0",
+                        }}
+                      >
+                        <div style={{ padding: "10px" }}>
+                          <div
+                            style={{
+                              width: "100%",
+                            }}
+                          >
+                            <img
+                              src={image[index % 4] ? image[index % 4] : ""}
+                              style={{ width: "100%" }}
+                            />
+                          </div>
+                          <div>
+                            <h1>{n.product_name ? n.product_name : ""}</h1>
+                          </div>
+                          <div>
+                            <h3>
+                              {n.price !== undefined ? "Rs. " + n.price : ""}
+                            </h3>
+                          </div>
+                        </div>
+                        <div style={{ width: "100%" }}>
+                          <button
+                            style={{
+                              width: "100%",
+                              backgroundColor: "#ceb38e",
+                              fontWeight: "800",
+                              fontSize: "18px",
+                              borderRadius: "8px",
+                              padding: "8px",
+                            }}
+                            onClick={() =>
+                              this.ClickOnAddToCart(image[index % 4], n)
+                            }
+                          >
+                            ADD TO CART
+                          </button>
+                        </div>
+                      </div>
+                    );
+                  })
+                : ""}
+            </div>
+            <div className="col-lg-6"></div>
+          </div>
 
-        {show && <Cart close={this.close} />}
+          {show && <Cart close={this.close} />}
+        </div>
       </>
     );
   }
